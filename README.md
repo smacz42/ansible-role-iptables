@@ -1,30 +1,68 @@
-# Ansible Role: `iptables`
+# Ansible Role: bu-node
 
-[![Build Status]]
+## Description
 
-Description
+These are tasks to configure iptables on a CentOS host.
 
-## Requirements
+This is typically made to set, per-rule:
 
-*
+* chain
+* comment
+* source address
+* destination port
+* protocol
+* target
+
+### Requirements
+
+* RHEL-only
 
 ## Role Variables
 
+```yaml
+variable: value # comment
+```
 
-## Dependencies
+## Tags
 
+### Role-Specific tags:
 
+* `iptables`
+* `iptables_install`
+* `iptables_config`
+
+### Global tags:
+
+* `install`
+* `config`
+### Dependencies
+
+* `smacz42.common`
+* `smacz42.iptables`
+* `smacz42.httpd`
 
 ## Example Playbook
 
-    - hosts: all
-      roles:
-        - { role: smacz42.iptables }
+```yaml
+- name: Roles in Common
+  hosts: all
+  gather_facts: true
+  remote_user: root
+  #no_log: true
+
+  roles:
+    - { role: common }
+    - { role: iptables }
+```
+
+## TODO:
+
+* ip6tables
 
 ## License
 
-MIT / BSD
+Licensed under the MIT License. See the LICENSE file for details.
 
 ## Author Information
 
-This role was created in 2017 by [Andrew Cz](https://hobbithole.blue), a student at The Ohio State University.
+This role was created in 2017 by [Andrew Cz](https://andrewcz.com), a student at The Ohio State University.
